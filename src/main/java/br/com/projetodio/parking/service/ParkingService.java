@@ -24,8 +24,11 @@ public class ParkingService {
     /////////////////////////////////////////////////////////////
     static {
         var id = (String) getUUID(); 
-        Parking parking = new Parking(id, "DMS - 1111", "SC", "CELTA", "PRETO");
+        var id1 = (String) getUUID(); 
+        Parking parking = new Parking(id, "XXX - 1111", "SC", "CELTA", "PRETO");
+        Parking parking1 = new Parking(id1, "ZZZ - 1111", "RN", "CORSA", "AZUL");
         parkingMap.put(id, parking);
+        parkingMap.put(id1, parking1);
     }
     
     /////////////////////////////////////////////////////////////
@@ -39,6 +42,10 @@ public class ParkingService {
     /////////////////////////////////////////////////////////////
     public List<Parking> findaAll(){
         return parkingMap.values().stream().collect(Collectors.toList());
+    }
+
+    public Parking findById(String id) {
+        return parkingMap.get(id);
     }
 }
 /////////////////////////////////////////////////////////////////
