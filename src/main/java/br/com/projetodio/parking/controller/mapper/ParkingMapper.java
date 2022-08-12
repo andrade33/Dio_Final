@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import br.com.projetodio.parking.controller.dto.ParkingDTO;
+import br.com.projetodio.parking.controller.dto.parkingCreateDTO;
 import br.com.projetodio.parking.model.Parking;
 /////////////////////////////////////////////////////////////////
 
@@ -22,6 +23,14 @@ public class ParkingMapper {
     } 
     public List<ParkingDTO> toParkingDTOList(List<Parking> parkingList) {
         return parkingList.stream().map(this::toParkingDTO).collect(Collectors.toList());
+    }
+
+    public Parking toParking(ParkingDTO dto) {
+        return MODEL_MAPPER.map(dto, Parking.class);
+    }
+
+    public Parking toParkingCreate(parkingCreateDTO dto) {
+        return MODEL_MAPPER.map(dto, Parking.class);
     }
 }
 /////////////////////////////////////////////////////////////////

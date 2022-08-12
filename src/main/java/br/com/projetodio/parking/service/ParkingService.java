@@ -2,6 +2,7 @@
 package br.com.projetodio.parking.service;
 /////////////////////////////////////////////////////////////////
 
+import java.time.LocalDateTime;
 /////////////////////////////////////////////////////////////////
 import java.util.HashMap;
 import java.util.List;
@@ -46,6 +47,14 @@ public class ParkingService {
 
     public Parking findById(String id) {
         return parkingMap.get(id);
+    }
+
+    public Parking create(Parking parkingCreate) {
+        String uuid = getUUID();
+        parkingCreate.setId(uuid);
+        parkingCreate.setEntryDate(LocalDateTime.now());
+        parkingMap.put(uuid, parkingCreate);
+        return parkingCreate;
     }
 }
 /////////////////////////////////////////////////////////////////
